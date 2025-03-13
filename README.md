@@ -13,7 +13,7 @@ Using machine learning, we need structured ways to represent mutations. Here is 
 
 2. **Dimensionality reduction**: since mutation data is high-dimensional, apply methods like **principal component analysis (PCA)** to reduce feature numbers. This will be done separately for each mutation type before combining them in the ML model.
 
-## steps
+## Steps
 
 1. **Literature overview**. Review existing studies on genetic mutations and their effect on the tumor microenvironment, focusing on mucin production and immune cell composition in colorectal cancer.
 
