@@ -1,29 +1,35 @@
 # Table of contents
 
+- [Mucin data](#mucin-data)
+  - [Mucin data columns](#mucin-data-columns)
+- [Mucin gene expression data](#mucin-gene-expression-data)
+  - [Gene expression data](#gene-expression-data)
 - [Clinical Data](#clinical-data)
-  - [Sample ID](#sample-id)
-  - [Patient Characteristics](#patient-characteristics)
+  - [Sample id](#sample-id)
+  - [Patient characteristics](#patient-characteristics)
   - [MSI and TMB](#msi-and-tmb)
-  - [Tumor Stage](#tumor-stage)
-  - [Survival Data](#survival-data)
-  - [Immune Cell Estimation from Blood](#immune-cell-estimation-from-blood)
-  - [Tumor-Infiltrating Lymphocytes (TIL) Estimation from Images](#tumor-infiltrating-lymphocytes-til-estimation-from-images)
+  - [Tumor stage](#tumor-stage)
+  - [Survival data](#survival-data)
+  - [Immune cell estimation from blood](#immune-cell-estimation-from-blood)
+  - [Tumor-infiltrating lymphocytes (TIL) estimation from images](#tumor-infiltrating-lymphocytes-til-estimation-from-images)
   - [Coverage](#coverage)
-  - [Immune Cell Estimation from ESTIMATE Algorithm](#immune-cell-estimation-from-estimate-algorithm)
+  - [Immune cell estimation from ESTIMATE algorithm](#immune-cell-estimation-from-estimate-algorithm)
 - [Neoantigens from pVACseq](#neoantigens-from-pvacseq)
 
 # Mucin data
 
-Mucin data is taken from the study: Nguyen, Huu-Giao, et al. *"Image-based assessment of extracellular mucin-to-tumor area predicts consensus molecular subtypes (CMS) in colorectal cancer."* Modern Pathology 35.2 (2022): 240-248.
+Mucin data is taken from the study: 
 
-## Sample ID
+Nguyen, Huu-Giao, et al. *"Image-based assessment of extracellular mucin-to-tumor area predicts consensus molecular subtypes (CMS) in colorectal cancer."* Modern Pathology 35.2 (2022): 240-248.
+
+## Sample id
 - **case_submitter_id**: A unique patient identifier that submitted the sample. It does not correspond to **Tumor_Sample_Barcode** used in other TCGA files. To understand more, refer to [GDC](https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/).
 - **Transformation**: To convert **Tumor_Sample_Barcode** to **case_submitter_id**, remove the suffix from the barcode.
   - Example:
     - **Tumor Sample Barcode**: `TCGA-A6-2671-01A-11D-A36X-10`
     - **Corresponding Case Submitter ID**: `TCGA-A6-2671`
 
-## Mucin Data Columns
+## Mucin data columns
 - **MSI**: Microsatellite Instability (MSI) status of the sample. Possible values: `MSS` (Microsatellite Stable) or `MSI` (Microsatellite Instable).
 - **average_mucin**: The average level of mucin detected in the sample.
 - **max_mucin**: The maximum mucin level detected in the sample.
@@ -34,7 +40,7 @@ Mucin data is taken from the study: Nguyen, Huu-Giao, et al. *"Image-based asses
 
 The `muc_tpm.csv` file contains gene expression data for mucin-associated genes. Expression values are represented in **Transcripts Per Million (TPM)**, which normalizes gene expression levels for comparison across samples.
 
-## Sample ID
+## Sample id
 - **sample_submitter_id**: A unique identifier for each sample, corresponding to **Tumor_Sample_Barcode** in TCGA datasets. More details on sample barcodes can be found in the [GDC documentation](https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/).
 
 ## Gene expression data
@@ -47,7 +53,7 @@ Examples of mucin genes included:
 
 # Clinical data
 
-## Sample ID
+## Sample id
 - **Tumor_Sample_Barcode, case_submitter_id, sample_submitter_id**: These are unique codes assigned to each sample from the TCGA (The Cancer Genome Atlas) dataset. For more information look at [GDC](https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/)
 - **dataset**: Specifies the type of TCGA dataset. Since COAD (colon adenocarcinoma) and READ (rectal adenocarcinoma) datasets are combined, this column tracks which dataset each sample belongs to.
 - **sample_type**: Indicates the type of sample. TCGA includes different sample types such as normal solid tissue and primary tumor. Since we focus only on primary tumors, this column is mainly for verification.
@@ -86,7 +92,7 @@ These columns represent different types of immune cells measured in the tumor mi
 - **dendritic_cells**: Antigen-presenting cells that help trigger immune responses.
 - **macrophages**: Large immune cells that engulf and digest cellular debris and pathogens.
 
-## Tumor-Infiltrating Lymphocytes (TIL) estimation from images
+## Tumor-infiltrating lymphocytes (TIL) estimation from images
 - **number_of_TIL_patches**: The count of TIL patches identified in tumor images.
 - **number_of_clusters**: The number of immune cell clusters detected in the tumor.
 - **til_percentage**: The estimated percentage of tumor-infiltrating lymphocytes based on image analysis.
