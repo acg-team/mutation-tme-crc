@@ -12,6 +12,39 @@
   - [Immune Cell Estimation from ESTIMATE Algorithm](#immune-cell-estimation-from-estimate-algorithm)
 - [Neoantigens from pVACseq](#neoantigens-from-pvacseq)
 
+# Mucin data
+
+Mucin data is taken from the study: Nguyen, Huu-Giao, et al. *"Image-based assessment of extracellular mucin-to-tumor area predicts consensus molecular subtypes (CMS) in colorectal cancer."* Modern Pathology 35.2 (2022): 240-248.
+
+## Sample ID
+- **case_submitter_id**: A unique patient identifier that submitted the sample. It does not correspond to **Tumor_Sample_Barcode** used in other TCGA files. To understand more, refer to [GDC](https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/).
+- **Transformation**: To convert **Tumor_Sample_Barcode** to **case_submitter_id**, remove the suffix from the barcode.
+  - Example:
+    - **Tumor Sample Barcode**: `TCGA-A6-2671-01A-11D-A36X-10`
+    - **Corresponding Case Submitter ID**: `TCGA-A6-2671`
+
+## Mucin Data Columns
+- **MSI**: Microsatellite Instability (MSI) status of the sample. Possible values: `MSS` (Microsatellite Stable) or `MSI` (Microsatellite Instable).
+- **average_mucin**: The average level of mucin detected in the sample.
+- **max_mucin**: The maximum mucin level detected in the sample.
+- **mucin**: A binary indicator (`0` or `1`), where `1` denotes the presence of mucin in the sample and `0` indicates its absence.
+- **CMS**: Consensus Molecular Subtype (CMS) classification of colorectal cancer, with possible values: `CMS1`, `CMS2`, `CMS3`, or `CMS4`. 
+
+# Mucin gene expression data
+
+The `muc_tpm.csv` file contains gene expression data for mucin-associated genes. Expression values are represented in **Transcripts Per Million (TPM)**, which normalizes gene expression levels for comparison across samples.
+
+## Sample ID
+- **sample_submitter_id**: A unique identifier for each sample, corresponding to **Tumor_Sample_Barcode** in TCGA datasets. More details on sample barcodes can be found in the [GDC documentation](https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/).
+
+## Gene expression data
+Each column (except `sample_submitter_id`) corresponds to a mucin-associated gene, with expression values given in TPM.
+
+Examples of mucin genes included:
+- **MUC1, MUC2, MUC4, MUC5AC, MUC5B, MUC6, MUC7** – well-known mucin genes involved in various biological processes, including tumor progression.
+- **MUC12, MUC13, MUC15, MUC16, MUC17, MUC19, MUC20, MUC21, MUC22, MUC3A** – additional mucin genes implicated in colorectal cancer biology.
+- **MUCL1, MUCL3** – mucin-like genes with lesser-known roles in CRC.
+
 # Clinical data
 
 ## Sample ID

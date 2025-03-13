@@ -10,9 +10,6 @@ The **TCGAbiolinks** R package provides an easy way to query and download MAF fi
 
 ### Code 
 ```r
-# Load necessary library
-library(TCGAbiolinks)
-
 # Define the cancer type
 cancer <- "COAD"
 
@@ -32,3 +29,9 @@ TCGAbiolinks::GDCdownload(query)
 maf <- TCGAbiolinks::GDCprepare(query)
 ```
 
+### Barcode transformation 
+To convert **Tumor_Sample_Barcode** to **case_submitter_id**, remove the suffix from the barcode.
+
+Example:
+  - **Tumor Sample Barcode**: `TCGA-A6-2671-01A-11D-A36X-10`
+  - **Corresponding Case Submitter ID**: `TCGA-A6-2671`
